@@ -1,0 +1,71 @@
+import random
+
+
+def print_rules():
+    print("Welcome to Rock-Paper-Scissors!")
+    print("You are playing against Virtual Austin.")
+    print("The goal is to beat Virtual Austin three times in a row to win.")
+    print("The rules are simple:")
+    print("- Rock beats scissors")
+    print("- Scissors beat paper")
+    print("- Paper beats rock")
+
+
+def play_game():
+    options = ["rock", "paper", "scissors"]
+    computer_name = "Virtual Austin"
+    computer_wins = 0
+    player_wins = 0
+
+    print_rules()
+
+    while True:
+        computer_choice = random.choice(options)
+        player_choice = input(
+            "Enter your choice (rock/paper/scissors): ").lower()
+
+        if player_choice not in options:
+            print("Invalid choice. Please try again.")
+            continue
+
+        if player_choice == computer_choice:
+            print("Tie!")
+            continue
+
+        if player_choice == "rock":
+            if computer_choice == "paper":
+                print(f"{computer_name} wins!")
+                computer_wins += 1
+            elif computer_choice == "scissors":
+                print("You win!")
+                player_wins += 1
+
+        elif player_choice == "paper":
+            if computer_choice == "scissors":
+                print(f"{computer_name} wins!")
+                computer_wins += 1
+            elif computer_choice == "rock":
+                print("You win!")
+                player_wins += 1
+
+        elif player_choice == "scissors":
+            if computer_choice == "rock":
+                print(f"{computer_name} wins!")
+                computer_wins += 1
+            elif computer_choice == "paper":
+                print("You win!")
+                player_wins += 1
+
+        if player_wins == 3:
+            print("Congratulations! You beat Virtual Austin three times in a row!")
+            break
+        elif computer_wins == 3:
+            print("Sorry, you lost. Better luck next time.")
+            break
+
+        print(f"{computer_name}'s choice was: {computer_choice}")
+        print(f"Your score: {player_wins}")
+        print(f"{computer_name}'s score: {computer_wins}")
+
+
+play_game()
