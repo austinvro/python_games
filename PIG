@@ -1,0 +1,58 @@
+import random
+
+def play_game():
+    player_score = 0
+    computer_score = 0
+
+    print("Welcome to Pig!")
+    print("Roll the dice and try to score as many points as possible.")
+    print("If you roll a 1, you lose all your points for the round.")
+
+    while True:
+        print(f"Player score: {player_score} | Computer score: {computer_score}")
+
+        # Player turn
+        round_score = 0
+        while True:
+            roll = input("Press R to roll the dice or H to hold: ").lower()
+            if roll == "r":
+                dice = random.randint(1, 6)
+                print(f"You rolled a {dice}.")
+                if dice == 1:
+                    round_score = 0
+                    print("Sorry, you lose all your points for the round.")
+                    break
+                else:
+                    round_score += dice
+                    print(f"Your round score is now {round_score}.")
+            elif roll == "h":
+                player_score += round_score
+                print(f"Your score is now {player_score}.")
+                break
+
+        if player_score >= 100:
+            print("Congratulations, you win!")
+            break
+
+        # Computer turn
+        round_score = 0
+        while True:
+            dice = random.randint(1, 6)
+            print(f"The computer rolls a {dice}.")
+            if dice == 1:
+                round_score = 0
+                print("The computer loses all its points for the round.")
+                break
+            else:
+                round_score += dice
+                print(f"The computer's round score is now {round_score}.")
+                if round_score >= 20 or computer_score + round_score >= 100:
+                    computer_score += round_score
+                    print(f"The computer's score is now {computer_score}.")
+                    break
+
+        if computer_score >= 100:
+            print("Sorry, you lose. The computer wins.")
+            break
+
+play_game()
