@@ -1,0 +1,58 @@
+import random
+
+def play_game():
+    print("Welcome to The Adventures of Austin!")
+    print("You are Austin, a kid who loves programming.")
+    print("You have just arrived at a technology conference where you will get to meet your programming hero, Ada.")
+
+    # Set up the story
+    story = [("As you make your way to the conference, you realize you've forgotten your laptop charger. Do you go back to get it?", "yes", "no"),
+             ("You arrive at the conference and attend a workshop on machine learning. Ada is also in attendance. Do you introduce yourself?", "yes", "no"),
+             ("During the workshop, you have the opportunity to ask Ada a question. Do you ask her about her programming philosophy or about her favorite programming language?", "philosophy", "language"),
+             ("Ada is impressed with your question and invites you to lunch with her. Do you accept?", "yes", "no")]
+
+    # Play the game
+    current_scene = 0
+    while True:
+        print()
+        print(story[current_scene][0])
+        choice = input("Enter your choice (yes/no, philosophy/language): ").lower()
+
+        if choice == story[current_scene][1]:
+            print("You made the right choice!")
+            current_scene += 1
+        elif choice == story[current_scene][2]:
+            print("You made the wrong choice!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+        if current_scene == len(story):
+            print("Congratulations, you completed the story!")
+            print("As a reward, you have unlocked a secret ending.")
+            print("To unlock the secret ending, enter the word 'easter egg' at any time during the game.")
+            break
+
+    # Secret ending
+    while True:
+        print()
+        print("You have unlocked the secret ending!")
+        print("You discover a hidden room at the conference and find a computer with a strange program running on it.")
+        print("Do you investigate the program or leave the room?")
+        choice = input("Enter your choice (investigate/leave): ").lower()
+
+        if choice == "investigate":
+            print("You investigate the program and discover that it's a secret project that Ada has been working on.")
+            print("Ada is impressed with your skills and offers you a job at her company!")
+            break
+        elif choice == "leave":
+            print("You leave the room and continue on with your life, wondering what could have been.")
+            break
+        elif choice == "easter egg":
+            print("You have discovered the easter egg!")
+            print("You unlock a secret menu that allows you to access all of the different endings.")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+play_game()
